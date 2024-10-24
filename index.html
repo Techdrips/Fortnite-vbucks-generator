@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vbucks generator</title>
+    <title>Home Screen & Code Generator</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         body {
@@ -36,22 +36,38 @@
             margin-top: 20px;
             font-size: 16px;
         }
-        h1, textarea {
-    -webkit-text-stroke: 0.35px black; /* Adds black border to the text */
-    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-}
-
+        h1 {
+            -webkit-text-stroke: 1px black; /* Adds black border to the text */
+            text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Vbucks Code Generator!</h1>
-        <button onclick="generateCodes()">Generate Vbucks Codes</button>
-        <button onclick="copyToClipboard()">Copy to your device</button>
+    <!-- Home Screen -->
+    <div id="homeScreen" class="container">
+        <h1>Welcome to the Code Generator!</h1>
+        <button onclick="goToGenerator()">Go to Generator</button>
+    </div>
+
+    <!-- Code Generator Screen -->
+    <div id="generatorScreen" class="container hidden">
+        <h1>Random 16-Digit Code Generator</h1>
+        <button onclick="generateCodes()">Generate Codes</button>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
         <textarea id="codeArea" readonly></textarea>
     </div>
 
     <script>
+        // Function to switch from home screen to the generator screen
+        function goToGenerator() {
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('generatorScreen').classList.remove('hidden');
+        }
+
+        // Function to generate random 16-character codes
         function generateCodes() {
             const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
             const codeCount = 100;
@@ -69,6 +85,7 @@
             document.getElementById('codeArea').value = codes;
         }
 
+        // Function to copy the generated codes to the clipboard
         function copyToClipboard() {
             const codeArea = document.getElementById('codeArea');
             codeArea.select();
