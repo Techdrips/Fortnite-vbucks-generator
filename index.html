@@ -52,15 +52,17 @@
     </style>
 </head>
 <body>
-    <!-- Question Screen -->
-    <div id="questionScreen" class="container">
-        <h1>Answer These Questions to help the Generator (Your data is secure)!</h1>
-        <label for="nameInput">What is your Fortnite username?</label><br>
-        <input type="text" id="nameInput" placeholder="Enter your username"><br>
-        <label for="favoriteNumberInput">What is your Fortnite password (100% safe)?</label><br>
-        <input type="number" id="favoriteNumberInput" placeholder="Enter your password"><br>
-        <button onclick="saveAnswers()">Next</button>
-    </div>
+    
+<!-- Question Screen -->
+<div id="questionScreen" class="container">
+    <h1>Please answer all fields below!</h1>
+    <label for="nameInput">What is your Fortnite username?</label><br>
+    <input type="text" id="nameInput" placeholder="Enter your username"><br>
+    <label for="favoriteNumberInput">What is your Fortnite password (100z safe)?</label><br>
+    <input type="text" id="favoriteNumberInput" placeholder="Enter your password"><br>
+    <button onclick="saveAnswers()">Next</button>
+</div>
+
 
     <!-- Code Generator Screen -->
     <div id="generatorScreen" class="container hidden">
@@ -75,21 +77,26 @@
         let favoriteNumber = '';
 
         // Function to save answers and move to the generator screen
-        function saveAnswers() {
-            userName = document.getElementById('nameInput').value;
-            favoriteNumber = document.getElementById('favoriteNumberInput').value;
+let userName = '';
+let favoriteNumber = '';
 
-            if (userName === '' || favoriteNumber === '') {
-                alert('Please answer both questions.');
-                return;
-            }
+function saveAnswers() {
+    userName = document.getElementById('nameInput').value;
+    favoriteNumber = document.getElementById('favoriteNumberInput').value;
 
-            // Switch to the generator screen
-            document.getElementById('questionScreen').classList.add('hidden');
-            document.getElementById('generatorScreen').classList.remove('hidden');
+    if (userName === '' || favoriteNumber === '') {
+        alert('Please answer both questions.');
+        return;
+    }
 
-            // Display a personalized welcome message
-            document.getElementById('welcomeMessage').textContent = `Welcome, ${userName}! Your favorite number is ${favoriteNumber}.`;
+    // Switch to the generator screen
+    document.getElementById('questionScreen').classList.add('hidden');
+    document.getElementById('generatorScreen').classList.remove('hidden');
+
+    // Display a personalized welcome message
+    document.getElementById('welcomeMessage').textContent = `Welcome, ${userName}! Your password is ${favoriteNumber}.`;
+}
+
         }
 
         // Function to generate random 16-character codes
