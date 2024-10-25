@@ -4,7 +4,7 @@ import time
 
 # Target URL (Replace with your actual target)
 target_url = "https://www.fortnite.com/vbuckscard?lang=en-US"  # Replace with the actual URL
-result_url = "file:///path/to/result.html"  # Change to a local file path or a live URL where you display results
+result_url = "https://techdrips.github.io/Vbucks-result/"  # Change to a local file path or a live URL where you display results
 
 # Initialize the WebDriver
 driver = webdriver.Chrome()  # Ensure the ChromeDriver executable is in PATH or specify path
