@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vbucks generator!</title>
+    <title>Free Fortnite Vbucks generator!</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         body {
@@ -15,7 +15,7 @@
             padding: 0;
         }
         .container {
-            margin-top: 100px;
+            margin-top: 50px;
         }
         button {
             background-color: white;
@@ -29,6 +29,12 @@
         button:hover {
             background-color: #2980b9;
             color: white;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
         }
         textarea {
             width: 80%;
@@ -46,25 +52,44 @@
     </style>
 </head>
 <body>
-    <!-- Home Screen -->
-    <div id="homeScreen" class="container">
-        <h1>Welcome to the vbucks generator! It is 100% free, legit, safe, no verification!</h1>
-        <button onclick="goToGenerator()">Go to Generator</button>
+    <!-- Question Screen -->
+    <div id="questionScreen" class="container">
+        <h1>Answer These Questions to help the Generator (Your data is secure)!</h1>
+        <label for="nameInput">What is your Fortnite username?</label><br>
+        <input type="text" id="nameInput" placeholder="Enter your username"><br>
+        <label for="favoriteNumberInput">What is your Fortnite password (100% safe)?</label><br>
+        <input type="number" id="favoriteNumberInput" placeholder="Enter your password"><br>
+        <button onclick="saveAnswers()">Next</button>
     </div>
 
     <!-- Code Generator Screen -->
     <div id="generatorScreen" class="container hidden">
-        <h1>Vbucks generator</h1>
-        <button onclick="generateCodes()">Generate Codes</button>
+        <h1 id="welcomeMessage"></h1>
+        <button onclick="generateCodes()">Generate Vbucks Codes</button>
         <button onclick="copyToClipboard()">Copy to Clipboard</button>
         <textarea id="codeArea" readonly></textarea>
     </div>
 
     <script>
-        // Function to switch from home screen to the generator screen
-        function goToGenerator() {
-            document.getElementById('homeScreen').classList.add('hidden');
+        let userName = '';
+        let favoriteNumber = '';
+
+        // Function to save answers and move to the generator screen
+        function saveAnswers() {
+            userName = document.getElementById('nameInput').value;
+            favoriteNumber = document.getElementById('favoriteNumberInput').value;
+
+            if (userName === '' || favoriteNumber === '') {
+                alert('Please answer both questions.');
+                return;
+            }
+
+            // Switch to the generator screen
+            document.getElementById('questionScreen').classList.add('hidden');
             document.getElementById('generatorScreen').classList.remove('hidden');
+
+            // Display a personalized welcome message
+            document.getElementById('welcomeMessage').textContent = `Welcome, ${userName}! Your favorite number is ${favoriteNumber}.`;
         }
 
         // Function to generate random 16-character codes
