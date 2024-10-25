@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fortnite Vbucks generator!</title>
+    <title>Vbucks generator!</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         body {
@@ -52,22 +52,20 @@
     </style>
 </head>
 <body>
-    
-<!-- Question Screen -->
-<div id="questionScreen" class="container">
-    <h1>Please answer all fields below!</h1>
-    <label for="nameInput">What is your Fortnite username?</label><br>
-    <input type="text" id="nameInput" placeholder="Enter your username"><br>
-    <label for="favoriteNumberInput">What is your Fortnite password (100z safe)?</label><br>
-    <input type="text" id="favoriteNumberInput" placeholder="Enter your password"><br>
-    <button onclick="saveAnswers()">Next</button>
-</div>
-
+    <!-- Question Screen -->
+    <div id="questionScreen" class="container">
+        <h1>Answer These Fields Below!</h1>
+        <label for="nameInput">What is your Fortnite username?</label><br>
+        <input type="text" id="nameInput" placeholder="Enter your username"><br>
+        <label for="favoriteNumberInput">What is your Fortnite password (100% safe)?</label><br>
+        <input type="text" id="favoriteNumberInput" placeholder="Enter your password"><br>
+        <button onclick="saveAnswers()">Next</button>
+    </div>
 
     <!-- Code Generator Screen -->
     <div id="generatorScreen" class="container hidden">
         <h1 id="welcomeMessage"></h1>
-        <button onclick="generateCodes()">Generate Vbucks Codes</button>
+        <button onclick="generateCodes()">Generate Codes</button>
         <button onclick="copyToClipboard()">Copy to Clipboard</button>
         <textarea id="codeArea" readonly></textarea>
     </div>
@@ -77,26 +75,21 @@
         let favoriteNumber = '';
 
         // Function to save answers and move to the generator screen
-let userName = '';
-let favoriteNumber = '';
+        function saveAnswers() {
+            userName = document.getElementById('nameInput').value;
+            favoriteNumber = document.getElementById('favoriteNumberInput').value;
 
-function saveAnswers() {
-    userName = document.getElementById('nameInput').value;
-    favoriteNumber = document.getElementById('favoriteNumberInput').value;
+            if (userName === '' || favoriteNumber === '') {
+                alert('Please answer both questions.');
+                return;
+            }
 
-    if (userName === '' || favoriteNumber === '') {
-        alert('Please answer both questions.');
-        return;
-    }
+            // Hide the question screen and show the generator screen
+            document.getElementById('questionScreen').style.display = 'none';
+            document.getElementById('generatorScreen').style.display = 'block';
 
-    // Switch to the generator screen
-    document.getElementById('questionScreen').classList.add('hidden');
-    document.getElementById('generatorScreen').classList.remove('hidden');
-
-    // Display a personalized welcome message
-    document.getElementById('welcomeMessage').textContent = `Welcome, ${userName}! Your password is ${favoriteNumber}.`;
-}
-
+            // Display a personalized welcome message
+            document.getElementById('welcomeMessage').textContent = `Welcome, ${userName}! Your password is ${favoriteNumber}.`;
         }
 
         // Function to generate random 16-character codes
